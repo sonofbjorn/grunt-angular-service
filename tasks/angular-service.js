@@ -167,9 +167,7 @@ var makeTemplate = function(exportStrategy, defineModule, modDeps, deps, choose)
       funcBody +=
         " return module.exports['" + choose + "']; ";
     } else {
-      // Check if the target library only exported a single value onto context.
-      // If so, return that single value, otherwise return the entire context
-      // object.
+    // return exposed API (from module.exports)
       funcBody +=
         " var propsAddedByTargetLib = [];" +
         " angular.forEach(module.exports, function (val, prop) { " +
@@ -177,11 +175,7 @@ var makeTemplate = function(exportStrategy, defineModule, modDeps, deps, choose)
         "     propsAddedByTargetLib.push(val);" +
         "   }" +
         " });" +
-        " if (propsAddedByTargetLib.length === 1) {" +
-        "   return propsAddedByTargetLib.pop();" +
-        " } else { " +
-        "   return module.exports;" +
-        " } ";
+        " return module.exports;"
     }
   } // end `exports` exportStrategy
 
