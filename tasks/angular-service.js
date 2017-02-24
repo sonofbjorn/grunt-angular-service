@@ -152,7 +152,7 @@ var makeTemplate = function(exportStrategy, defineModule, modDeps, deps, choose)
       // Mock the require() function for providing dependencies to the target lib.
       "   var require = function (dependency) { " +
       "     return injected[dependency]; " +
-      "   }" +
+      "   };" +
       // Create a variable that mocks the global `module` provided by node.
       // Later, we inspect this shadowed object to see if the target library added
       // properties onto it.
