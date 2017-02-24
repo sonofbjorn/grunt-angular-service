@@ -157,7 +157,10 @@ var makeTemplate = function(exportStrategy, defineModule, modDeps, deps, choose)
       // Later, we inspect this shadowed object to see if the target library added
       // properties onto it.
       "   var module = {exports: {}}, exports = module.exports; " +
+      "  'use strict'"
+      "      /* jshint ignore:start */" +
       "   <%= targetLibrarySourceCode %>" +
+      "      /* jshint ignore:end */" +
       // If module.exports was set to something else, return it.
       "   if (!angular.isObject(module.exports)) { " +
       "     return module.exports;" +
